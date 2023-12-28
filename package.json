@@ -1,6 +1,6 @@
 {
-  "name": "lh-create-template",
-  "version": "0.0.1",
+  "name": "@lh0814/create-template",
+  "version": "0.0.2",
   "description": "cli模版仓库",
   "main": "./build",
   "scripts": {
@@ -9,13 +9,13 @@
     "publish": "npm run build && npm publish",
     "lint": "tslint ./src/**/*.ts --fix"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Lihuans/cli-template.git"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "bin": {
-    "create-rhmg-app": "./bin.js",
-    "create-rhmg-app-local": "./bin-local.js"
+    "lh-create-app": "./bin.js",
+    "lh-create-app-local": "./bin-local.js"
   },
   "files": [
     "build",

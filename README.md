@@ -4,10 +4,6 @@
 ### 一、背景：
 过去的半年里，因为工作业务的需要，自己陆续写了两个脚手架，且都在前端组内业务中应用起来了，因此也受到了主管肯定，顺便申请了专利，其中一个已经申请专利成功，另外一个申请中（等申请成功再写篇文章分享）...
 
-脚手架通常作为**中高级前端必备的技能**。文章较长，建议收藏～
-
-本文**纯干货**，通过本文，你可以get怎么开发一个**高大上**的脚手架
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bf429dae8bdf4c739134566d611023b8~tplv-k3u1fbpfcp-watermark.image?)
 
 ### 二、什么是脚手架，能解决什么问题：
 脚手架也常被称为`CLI`，全称`command-line interface`，翻译为命令行界面。前端脚手架CLI，也就是一个命令行工具
@@ -29,8 +25,6 @@
 -  减少重复性工作
 -  团队统一开发风格，规范项目开发目录结构，便于跨团队合作以及后期维护，降低新人上手成本
 -  提供一键前端项目的创建、配置、本地开发、插件扩展等功能，让开发着更多时间专注于业务
-
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bcf0608654524ec6b1ed9a4f5455164f~tplv-k3u1fbpfcp-watermark.image?)
 
 ### 三、如何搭建一个脚手架
 
@@ -333,7 +327,6 @@ start()
 逻辑大致与`create [options] <app-name>`一样，通过交互式初始化一个项目，利用`inquirer包`进行交互，询问用户`package.json`的**name**、**description**、**author**字段，拿到字段后，开始下载项目模版，**项目模版存在的位置有两种实现方式**，如下
 - 第一种是和脚手架打包在一起，在安装脚手架的时候就会将项目模板存放在全局目录下了，这种方式每次创建项目的时候都是从本地拷贝的速度很快，但是项目模板自身**升级比较困难**。
 - 第二种是将项目模板存在远端仓库（比如 gitlab 仓库），这种方式每次创建项目的时候都是通过某个地址**动态下载**的，项目模板更新方便
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3db448fe7eb144d1acb0154f1f6562a5~tplv-k3u1fbpfcp-watermark.image?)
 我们这里先用**第一种**，项目模版放在`project-template`路径下，第二种下面讲
 ```json
 // project-template/package.json
@@ -507,7 +500,3 @@ privatify
 ```
 ### 四、写在最后
 脚手架的重点是帮助降本增效，比脚手架基本开发技能更重要的是脚手架的设计思维，而这些思维一般都是需要我们对日常开发中遇到的痛难点的思考而形成的，本项目完整代码请戳:[zxyue25/github](https://github.com/zxyue25/cli-template.git)
-
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ed84ca7466f545a588946deaf4f85d88~tplv-k3u1fbpfcp-watermark.image?)
-
-> 编写本文，虽然花费了一定时间，但是在这个过程中，我也学习到了很多知识，谢谢各位小伙伴愿意花费宝贵的时间阅读本文，如果本文给了您一点帮助或者是启发，请不要吝啬你的赞和Star，您的肯定是我前进的最大动力

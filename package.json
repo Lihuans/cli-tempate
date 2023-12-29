@@ -9,6 +9,10 @@
     "publish": "npm run build && npm publish",
     "lint": "tslint ./src/**/*.ts --fix"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lihuans/cli-template.git"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"

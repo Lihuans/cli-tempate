@@ -125,13 +125,16 @@ export const getQuestions = async (projectName) => {
 
 export const downloadProject = async (targetDir, projectName, downloadName, projectInfo) => {
   startSpinner(`开始下载模板 ${chalk.cyan(targetDir)}`)
+  // degit user/repo#dev       # branch
+  // degit user/repo#v1.2.3    # release tag
+  // degit user/repo#1234abcd  # commit hash
   const emitter = degit(`https://github.com/Lihuans/${downloadName}.git`)
     await emitter.clone(targetDir)
       .then(() => {
         succeedSpiner('download template succeed.')
       })
       .catch(() => {
-        failSpinner('Request failed...')
+        failSpinner('下载失败, 请检查是否是网络问题')
       })
   // // 复制'project-template'到目标路径下创建工程
   // await fs.copy(
@@ -139,13 +142,13 @@ export const downloadProject = async (targetDir, projectName, downloadName, proj
   //   targetDir
   // )
 
-  console.log('开始替换模板====')
+  console.log('开始替换package.json模板====')
    // handlebars模版引擎解析用户输入的信息存在package.json
   const jsonPath = `${targetDir}/package.json`
   const jsonContent = fs.readFileSync(jsonPath, 'utf-8')
   const jsonResult = handlebars.compile(jsonContent)(projectInfo)
   fs.writeFileSync(jsonPath, jsonResult)
-  console.log('结束替换模板====')
+  console.log('结束替换package.json模板====')
 
   // 新建工程装包
   execa.commandSync('npm install', {
@@ -156,7 +159,6 @@ export const downloadProject = async (targetDir, projectName, downloadName, proj
   succeedSpiner(
     `项目创建完成 ${chalk.yellow(projectName)}\n👉 输入以下启动项目:`
   )
-
   info(`$ cd ${projectName}\n$ npm run dev\n`)
 }
 
@@ -189,6 +191,7 @@ export const cloneProject = async (targetDir, projectName, projectInfo) => {
 
 const action = async (projectName: string, cmdArgs?: any) => {
   try {
+    console.log(projectName)
     const targetDir = path.join(
       (cmdArgs && cmdArgs.context) || cwd,
       projectName

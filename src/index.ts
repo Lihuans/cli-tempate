@@ -64,6 +64,7 @@ function start() {
     process.exitCode = 1
   })
 
+  //解析命令行
   program.parseAsync(process.argv)
 }
 

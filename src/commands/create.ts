@@ -19,7 +19,7 @@ import {
 const degit = require('degit')
 
 // 检查是否已经存在相同名字工程
-export const checkProjectExist = async (targetDir) => {
+export const cancelCreate = async (targetDir) => {
   if (fs.existsSync(targetDir)) {
     const answer = await inquirer.prompt({
       type: 'list',
@@ -201,7 +201,7 @@ const action = async (projectName: string, cmdArgs?: any) => {
     // const ui = await selectUI()
     const tplName = await selecTpl()
     // console.log('project', project)
-    if (!(await checkProjectExist(targetDir))) {
+    if (!(await cancelCreate(targetDir))) {
       // 获取选项手动输入的值，是一个对象
       const projectInfo = await getQuestions(projectName)
       console.log('projectInfo==', projectInfo)
